@@ -50,7 +50,7 @@ your-project/
 
 **Option 1 — Generator (recommended)**
 
-Use the interactive wizard at [herald.sh](https://herald.sh) to generate your `.herald/` folder in under two minutes, then download it as a ZIP.
+Use the interactive wizard at [herald-web-app](https://herald.alejandrobrea.com/) to generate your `.herald/` folder in under two minutes, then download it as a ZIP.
 
 **Option 2 — CLI**
 
