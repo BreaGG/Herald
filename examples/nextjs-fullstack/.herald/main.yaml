@@ -1,0 +1,20 @@
+version: "1.0"
+
+project:
+  name: nextjs-fullstack
+  description: "Full-stack Next.js application with App Router, tRPC, and Prisma"
+  framework: nextjs
+  language: typescript
+
+layers:
+  context: true
+  skills: true
+  commands: true
+  agents: false
+  permissions: true
+
+compatible_with:
+  - claude-code
+  - cursor
+  - copilot
+  - any

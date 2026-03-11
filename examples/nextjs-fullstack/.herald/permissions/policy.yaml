@@ -1,0 +1,21 @@
+version: "1.0"
+
+allow:
+  - "src/**"
+  - "tests/**"
+  - "prisma/schema.prisma"
+  - "docs/**"
+  - "*.config.ts"
+  - "*.config.js"
+
+deny:
+  - "*.env"
+  - "*.env.*"
+  - ".env.local"
+  - ".env.production"
+  - "secrets/**"
+  - ".git/**"
+  - "prisma/migrations/**"
+  - "src/components/ui/**"
+  - "node_modules/**"
+  - ".next/**"

@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://herald.sh/schemas/v1/manifest.json",
+  "title": "HERALD Manifest",
+  "description": "Schema for .herald/main.yaml — the HERALD project manifest",
+  "type": "object",
+  "required": ["version", "project", "layers"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "HERALD spec version",
+      "enum": ["1.0"],
+      "examples": ["1.0"]
+    },
+    "project": {
+      "type": "object",
+      "required": ["name", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Short project identifier. No spaces.",
+          "pattern": "^[a-z0-9][a-z0-9-_]*$",
+          "examples": ["my-api", "ecommerce-platform"]
+        },
+        "description": {
+          "type": "string",
+          "description": "One-sentence description of the project.",
+          "maxLength": 200,
+          "examples": ["REST API for managing user accounts and billing"]
+        },
+        "framework": {
+          "type": "string",
+          "description": "Primary framework used in the project.",
+          "examples": ["nextjs", "fastapi", "rails", "go-echo", "django", "express"]
+        },
+        "language": {
+          "type": "string",
+          "description": "Primary programming language.",
+          "examples": ["typescript", "python", "go", "ruby", "rust"]
+        },
+        "repository": {
+          "type": "string",
+          "format": "uri",
+          "description": "Canonical repository URL.",
+          "examples": ["https://github.com/acme/my-api"]
+        }
+      }
+    },
+    "layers": {
+      "type": "object",
+      "description": "Which HERALD layers are active in this project.",
+      "additionalProperties": false,
+      "properties": {
+        "context":     { "type": "boolean", "default": false },
+        "skills":      { "type": "boolean", "default": false },
+        "commands":    { "type": "boolean", "default": false },
+        "agents":      { "type": "boolean", "default": false },
+        "permissions": { "type": "boolean", "default": false }
+      }
+    },
+    "compatible_with": {
+      "type": "array",
+      "description": "List of known-compatible AI tools.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "claude-code", "cursor", "copilot", "gemini", "codex",
+          "windsurf", "zed", "roo-code", "junie", "kiro",
+          "trae", "aider", "firebase-studio", "any"
+        ]
+      },
+      "uniqueItems": true,
+      "examples": [["claude-code", "cursor", "copilot"]]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://herald.sh/schemas/v1/policy.json",
+  "title": "HERALD Permissions Policy",
+  "description": "Schema for .herald/permissions/policy.yaml",
+  "type": "object",
+  "required": ["version"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "enum": ["1.0"]
+    },
+    "allow": {
+      "type": "array",
+      "description": "Glob patterns that agents MAY read and modify.",
+      "items": {
+        "type": "string",
+        "description": "Glob pattern in .gitignore syntax",
+        "examples": ["src/**", "tests/**", "docs/**"]
+      },
+      "uniqueItems": true
+    },
+    "deny": {
+      "type": "array",
+      "description": "Glob patterns that agents MUST NOT modify. Takes precedence over allow.",
+      "items": {
+        "type": "string",
+        "examples": ["*.env", "secrets/**", ".git/**", "migrations/**"]
+      },
+      "uniqueItems": true
+    }
+  }
+}

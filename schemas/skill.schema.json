@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://herald.sh/schemas/v1/skill.json",
+  "title": "HERALD Skill Frontmatter",
+  "description": "Schema for the YAML frontmatter in .herald/skills/<name>/SKILL.md",
+  "type": "object",
+  "required": ["name", "description", "version"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique skill identifier in kebab-case.",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "examples": ["create-component", "write-tests", "explain-error"]
+    },
+    "description": {
+      "type": "string",
+      "description": "One-sentence description. This is the only content loaded at Tier 1.",
+      "maxLength": 150,
+      "examples": ["Generate a React component following project conventions"]
+    },
+    "version": {
+      "type": "string",
+      "enum": ["1.0"],
+      "description": "Skill format version."
+    },
+    "triggers": {
+      "type": "array",
+      "description": "Optional keywords that hint when this skill should activate.",
+      "items": { "type": "string" },
+      "examples": [["new component", "create component", "add component"]]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+version: "1.0"
+
+project:
+  name: go-microservice
+  description: "High-throughput gRPC microservice in Go with hexagonal architecture"
+  framework: go-grpc
+  language: go
+
+layers:
+  context: true
+  skills: true
+  commands: true
+  agents: false
+  permissions: true
+
+compatible_with:
+  - claude-code
+  - cursor
+  - any

@@ -1,0 +1,19 @@
+version: "1.0"
+
+project:
+  name: python-fastapi-service
+  description: "Async REST microservice built with FastAPI, SQLAlchemy, and Alembic"
+  framework: fastapi
+  language: python
+
+layers:
+  context: true
+  skills: true
+  commands: false
+  agents: true
+  permissions: true
+
+compatible_with:
+  - claude-code
+  - cursor
+  - any
