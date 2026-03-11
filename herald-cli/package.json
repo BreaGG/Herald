@@ -1,0 +1,38 @@
+{
+  "name": "herald-agents",
+  "version": "1.0.0",
+  "description": "CLI for HERALD — one context, every agent. Init, compile, validate and inspect your .herald/ folder.",
+  "keywords": ["herald", "ai-agents", "claude", "cursor", "copilot", "agent-configuration", "llm"],
+  "homepage": "https://github.com/BreaGG/Herald",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BreaGG/Herald.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "herald": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "enquirer": "^2.4.1",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

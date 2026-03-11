@@ -52,13 +52,21 @@ your-project/
 
 Use the interactive wizard at [herald.sh](https://herald.sh) to generate your `.herald/` folder in under two minutes, then download it as a ZIP.
 
-**Option 2 — Install script**
+**Option 2 — CLI**
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/yourusername/herald/main/install/install.sh | bash
+npx herald-agents init
 ```
 
-**Option 3 — Manual**
+Detects your stack, asks a few questions, and generates your `.herald/` folder in under a minute. See [`herald-cli/`](./herald-cli) for full docs.
+
+**Option 3 — Install script**
+
+```bash
+curl -sSL https://raw.githubusercontent.com/BreaGG/Herald/main/install/install.sh | bash
+```
+
+**Option 4 — Manual**
 
 ```bash
 # 1. Create the folder
@@ -94,6 +102,33 @@ MD
 
 ---
 
+## CLI — `herald-agents`
+
+The official CLI lives in [`herald-cli/`](./herald-cli). No install required:
+
+```bash
+npx herald-agents init        # Create .herald/ interactively
+npx herald-agents compile     # Generate CLAUDE.md, .cursorrules, etc.
+npx herald-agents validate    # Validate .herald/main.yaml against the spec
+npx herald-agents status      # Show what's configured and what's missing
+```
+
+### `compile` targets
+
+```bash
+npx herald-agents compile all      # Every vendor file at once
+npx herald-agents compile claude   # → CLAUDE.md
+npx herald-agents compile cursor   # → .cursor/rules/herald.mdc
+npx herald-agents compile copilot  # → .github/copilot-instructions.md
+npx herald-agents compile gemini   # → GEMINI.md
+npx herald-agents compile windsurf # → .windsurfrules
+npx herald-agents compile agents   # → AGENTS.md
+```
+
+Write context once in `.herald/`. All vendor files stay in sync.
+
+---
+
 ## Five layers
 
 HERALD is additive. Start with `context/` only — add layers as your needs grow.
@@ -123,20 +158,40 @@ HERALD is designed to coexist with everything:
 - ✓ Works alongside `AGENTS.md` — keep it for broad compatibility
 - ✓ Compatible with `SKILL.md` ([agentskills.io](https://agentskills.io)) — use your existing skills inside `.herald/skills/`
 - ✓ Complements MCP — MCP handles runtime tools, HERALD handles project configuration
-- ✓ Can generate `CLAUDE.md`, `.cursorrules`, etc. on demand via `herald compile`
+- ✓ Can generate `CLAUDE.md`, `.cursorrules`, etc. on demand via `npx herald-agents compile`
 
 See [compatibility guides →](./compatibility)
 
 ---
 
+## Repo structure
+
+```
+herald/
+├── spec/v1/               # Full specification
+├── schemas/               # JSON schemas for manifest, policy, skill
+├── examples/              # Real .herald/ configs for different stacks
+│   ├── nextjs-fullstack/
+│   ├── python-fastapi/
+│   └── go-microservice/
+├── herald-cli/            # npx herald-agents — init, compile, validate, status
+├── compatibility/         # Guides for AGENTS.md, CLAUDE.md, SKILL.md
+├── docs/                  # Getting started, for tool builders
+├── install/               # install.sh bash installer
+└── community/             # Roadmap
+```
+
+---
+
 ## Documentation
 
-- [Why HERALD?](./docs/why-herald.md)
 - [Getting Started](./docs/getting-started.md)
 - [Full Specification →](./spec/v1)
+- [CLI Reference →](./herald-cli/README.md)
 - [Examples](./examples)
 - [For Tool Builders](./docs/for-tool-builders.md)
-- [JSON Schema](./schemas)
+- [JSON Schemas](./schemas)
+- [Compatibility guides](./compatibility)
 
 ---
 
@@ -150,6 +205,5 @@ HERALD is in **draft v1.0**. The core format is stable enough to use today. We'r
 
 ## License
 
-Spec and documentation: [CC0](./LICENSE) — public domain, no restrictions.  
+Spec and documentation: [CC0](./LICENSE) — public domain, no restrictions.
 Reference implementations and tooling: MIT.
-# Herald
